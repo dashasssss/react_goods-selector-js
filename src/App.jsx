@@ -40,20 +40,16 @@ export const App = () => {
       );
     }
 
-    if (selectedGood === '') {
-      return (
-        <button
-          data-cy="AddButton"
-          type="button"
-          className="button"
-          onClick={() => handleSelect(good)}
-        >
-          +
-        </button>
-      );
-    }
-
-    return null;
+    return (
+      <button
+        data-cy="AddButton"
+        type="button"
+        className="button"
+        onClick={() => handleSelect(good)}
+      >
+        +
+      </button>
+    );
   };
 
   return (
