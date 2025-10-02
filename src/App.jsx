@@ -18,13 +18,8 @@ export const goods = [
 export const App = () => {
   const [selectedGood, setSelectedGood] = useState('Jam');
 
-  const handleSelect = good => {
-    setSelectedGood(good);
-  };
-
-  const handleClear = () => {
-    setSelectedGood('');
-  };
+  const handleSelect = good => setSelectedGood(good);
+  const handleClear = () => setSelectedGood('');
 
   const renderActionButton = good => {
     if (selectedGood === good) {
@@ -56,7 +51,6 @@ export const App = () => {
     <main className="section container">
       <h1 className="title is-flex is-align-items-center">
         {selectedGood ? `${selectedGood} is selected` : 'No goods selected'}
-
         {selectedGood && (
           <button
             data-cy="ClearButton"
