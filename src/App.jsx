@@ -26,6 +26,36 @@ export const App = () => {
     setSelectedGood('');
   };
 
+  const renderActionButton = good => {
+    if (selectedGood === good) {
+      return (
+        <button
+          data-cy="RemoveButton"
+          type="button"
+          className="button is-info"
+          onClick={handleClear}
+        >
+          -
+        </button>
+      );
+    }
+
+    if (selectedGood === '') {
+      return (
+        <button
+          data-cy="AddButton"
+          type="button"
+          className="button"
+          onClick={() => handleSelect(good)}
+        >
+          +
+        </button>
+      );
+    }
+
+    return null;
+  };
+
   return (
     <main className="section container">
       <h1 className="title is-flex is-align-items-center">
@@ -51,28 +81,7 @@ export const App = () => {
                 selectedGood === good ? 'has-background-success-light' : ''
               }
             >
-              <td>
-                {selectedGood === good ? (
-                  <button
-                    data-cy="RemoveButton"
-                    type="button"
-                    className="button is-info"
-                    onClick={handleClear}
-                  >
-                    -
-                  </button>
-                ) : (
-                  <button
-                    data-cy="AddButton"
-                    type="button"
-                    className="button"
-                    onClick={() => handleSelect(good)}
-                  >
-                    +
-                  </button>
-                )}
-              </td>
-
+              <td>{renderActionButton(good)}</td>
               <td data-cy="GoodTitle" className="is-vcentered">
                 {good}
               </td>
